@@ -59,6 +59,7 @@ sysinfo.txt
 *.apk
 *.aab
 *.unitypackage
+build-webgl/
 
 # Crashlytics generated file
 crashlytics-build.properties

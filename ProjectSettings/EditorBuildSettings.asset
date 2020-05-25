@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Welcome/Welcome.unity
+    guid: ff207cfa6dbf8d998902b054ceb84d37
+  - enabled: 1
+    path: Assets/Scenes/CameraFollowing/CameraFollowing.unity
+    guid: 0406733851b6eb793871ef717cdfee26
+  - enabled: 1
+    path: Assets/Scenes/hello world/Hello World.unity
+    guid: c9b8cb497517bfa5d9ffce69bf368227
   m_configObjects: {}
