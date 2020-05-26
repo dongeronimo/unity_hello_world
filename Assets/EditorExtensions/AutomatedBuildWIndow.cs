@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using UnityEngine.SceneManagement;
 /// <summary>
 /// Referências:
@@ -31,10 +32,57 @@ public class AutomatedBuildWIndow : EditorWindow
     {
         if(GUILayout.Button("Webgl Build"))
         {
-            BuildPipeline.BuildPlayer(GetScenes(), WebglBuildPath,
-                BuildTarget.WebGL,
-                BuildOptions.None);
+            //BuildWebGlExecutable();
+            //TODO: Copiar o default.conf pra raiz da build
+            CopyDefaultConfTemplate();
+            //TODO: Copiar o Dockerfile pra raiz da build
+            CopyDockerfile();
+            //TODO: Copiar o heroku.yml pra raiz da build
+            CopyHerokuYml();
+            //TODO: Copiar o nginx.conf pra raiz da build
+            CopyNginxConf();
+            //TODO: Rodar os comandos pra gerar a imagem
+            //TODO: Rodar os comandos pra por a imagem no heroku
+
         }
+    }
+    private void CopyNginxConf()
+    {
+        CopyFiles("./Assets/EditorExtensions/webgl-automated-build/nginx.conf",
+            "./build-webgl/nginx.conf");
+    }
+    private void CopyHerokuYml()
+    {
+        CopyFiles("./Assets/EditorExtensions/webgl-automated-build/heroku.yml",
+            "./build-webgl/heroku.yml");
+    }
+    private void CopyDockerfile()
+    {
+        CopyFiles("./Assets/EditorExtensions/webgl-automated-build/Dockerfile",
+            "./build-webgl/Dockerfile");
+    }
+    private void CopyDefaultConfTemplate()
+    {
+        CopyFiles("./Assets/EditorExtensions/webgl-automated-build/default.conf.template",
+            "./build-webgl/default.conf.template");
+    }
+    private void CopyFiles(string src, string dest)
+    {
+        VerifyIfFileExists(src);
+        File.Copy(src, dest, true);
+        VerifyIfFileExists(dest);
+    }
+    private void VerifyIfFileExists(string filePath)
+    {
+        if (File.Exists(filePath) == false)
+        {
+            Debug.LogError("File not found " + filePath);
+        }
+    }
+    private void BuildWebGlExecutable() {
+        BuildPipeline.BuildPlayer(GetScenes(), WebglBuildPath,
+        BuildTarget.WebGL,
+        BuildOptions.None);
     }
     private void ShowWebGLBuildPathEditor()
     {
