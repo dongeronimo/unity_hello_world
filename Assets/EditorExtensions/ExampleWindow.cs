@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if (UNITY_EDITOR) 
+using UnityEngine;
 using UnityEditor;
 /// <summary>
 /// Baseado em https://www.youtube.com/watch?v=491TSNwXTIg
@@ -19,3 +20,4 @@ public class ExampleWindow : EditorWindow
         }
     }
 }
+#endif
