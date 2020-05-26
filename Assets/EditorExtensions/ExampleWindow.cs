@@ -15,7 +15,7 @@ public class ExampleWindow : EditorWindow
         GUILayout.Label("Hello World");
         if (GUILayout.Button("Press me"))
         {
-            Debug.Log("pressed");
+
         }
     }
 }
