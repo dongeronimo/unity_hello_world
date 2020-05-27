@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CameraFollowing/CameraFollowing.unity
     guid: 0406733851b6eb793871ef717cdfee26
+  - enabled: 1
+    path: Assets/Scenes/Hello Characters/Hello Characters.unity
+    guid: d9b8d664bf0fd8f2aadc62a1ebbe0f49
   m_configObjects: {}
