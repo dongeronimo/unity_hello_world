@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using UnityEngine.SceneManagement;
+using System.Diagnostics;
 /// <summary>
 /// Referências:
 /// Fazer uma janela do editor da Unity: https://www.youtube.com/watch?v=491TSNwXTIg
@@ -14,6 +15,7 @@ using UnityEngine.SceneManagement;
 public class AutomatedBuildWIndow : EditorWindow
 {
     private string WebglBuildPath = "build-webgl";
+    private string SudoPassword = "";
     // Add menu item named "Example Window" to the Window menu
     [MenuItem("Geronimo/Automated Builds")]
     public static void ShowWindow()
@@ -23,28 +25,104 @@ public class AutomatedBuildWIndow : EditorWindow
     }
     void OnGUI()
     {
+        ShowRootPasswordEditor();
         List<string> scenesPaths = GetScenePaths();
         ShowScenesList(scenesPaths);
         ShowWebGLBuildPathEditor();
         ShowWebGLBuildButton();
+    }
+    private void RunRootLinuxCommand(string commandString)
+    {
+        var psi = new ProcessStartInfo
+        {
+            FileName = "/bin/bash",
+            UseShellExecute = false,
+            RedirectStandardInput = true,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            Arguments = string.Format("-c \"sudo -S {0}\"", commandString),  //string.Format("-c \"sudo pwd \"", "pwd"),//"./build-webgl/deployToHeroku.sh")
+        };
+        using (var p = Process.Start(psi))
+        {
+            if (p != null)
+            {
+                StreamWriter myStreamWriter = p.StandardInput;
+                myStreamWriter.WriteLine(SudoPassword);
+                var strError = p.StandardError.ReadToEnd();
+                var strOutput = p.StandardOutput.ReadToEnd();
+                p.WaitForExit();
+                UnityEngine.Debug.LogError("error = " + strError);
+                UnityEngine.Debug.Log("output = " + strOutput);
+            }
+        }
     }
     private void ShowWebGLBuildButton()
     {
         if(GUILayout.Button("Webgl Build"))
         {
             //BuildWebGlExecutable();
-            //TODO: Copiar o default.conf pra raiz da build
-            CopyDefaultConfTemplate();
-            //TODO: Copiar o Dockerfile pra raiz da build
-            CopyDockerfile();
-            //TODO: Copiar o heroku.yml pra raiz da build
-            CopyHerokuYml();
-            //TODO: Copiar o nginx.conf pra raiz da build
-            CopyNginxConf();
+            //CopyDefaultConfTemplate();
+            //CopyDockerfile();
+            //CopyHerokuYml();
+            //CopyNginxConf();
+            //CopyShellCommand();
             //TODO: Rodar os comandos pra gerar a imagem
+            RunRootLinuxCommand("./build-webgl/deployToHeroku.sh");
+            //RunRootLinuxCommand("pwd");
+            /*
+            var psi = new ProcessStartInfo
+            {
+                FileName = "/bin/bash",
+                UseShellExecute = false,
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                Arguments = "-c \"sudo -S pwd\"", //string.Format("-c \"sudo pwd \"", "pwd"),//"./build-webgl/deployToHeroku.sh")
+            };
+            using (var p = Process.Start(psi))
+            {
+                if (p != null)
+                {
+                    StreamWriter myStreamWriter = p.StandardInput;
+                    myStreamWriter.WriteLine("Babilonia2");
+                    var strError = p.StandardError.ReadToEnd();
+                    var strOutput = p.StandardOutput.ReadToEnd();
+                    p.WaitForExit();
+                    UnityEngine.Debug.LogError("error = " + strError);
+                    UnityEngine.Debug.Log("output = " + strOutput);
+                }
+            }
+            */
+
+            /*
+             * O SHELLSCRIPT QUE EU USAVA NO EMSCRIPTEN.
+             * cd deploy
+             * sudo heroku container:login
+             * sudo heroku container:push web -a hello-emscripten-sdl
+             * sudo heroku container:release web -a hello-emscripten-sdl          
+            */
+            /*
+            Process p = new Process();
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.RedirectStandardError = true;
+            p.StartInfo.FileName = "/bin/bash";//output /home/luciano/Documents/Hello Unity
+            p.StartInfo.Arguments = "-c \"cd build-webgl && sudo heroku container:login && sudo heroku container:push web -a hello-emscripten-sdl && sudo heroku container:push web -a hello-emscripten-sdl\"";
+            p.Start();
+            string output = p.StandardOutput.ReadToEnd();
+            string error = p.StandardError.ReadToEnd();
+            p.WaitForExit();
+            UnityEngine.Debug.Log("output " + output);
+            UnityEngine.Debug.LogError("error " + error);
+            */
             //TODO: Rodar os comandos pra por a imagem no heroku
 
         }
+    }
+    private void CopyShellCommand()
+    {
+        CopyFiles("./Assets/EditorExtensions/webgl-automated-build/deployToHeroku.sh",
+            "./build-webgl/deployToHeroku.sh");
     }
     private void CopyNginxConf()
     {
@@ -76,7 +154,7 @@ public class AutomatedBuildWIndow : EditorWindow
     {
         if (File.Exists(filePath) == false)
         {
-            Debug.LogError("File not found " + filePath);
+            UnityEngine.Debug.LogError("File not found " + filePath);
         }
     }
     private void BuildWebGlExecutable() {
@@ -87,6 +165,10 @@ public class AutomatedBuildWIndow : EditorWindow
     private void ShowWebGLBuildPathEditor()
     {
         WebglBuildPath = EditorGUILayout.TextField("WebGL build path", WebglBuildPath);
+    }
+    private void ShowRootPasswordEditor()
+    {
+        SudoPassword = EditorGUILayout.TextField("sudo password", SudoPassword);
     }
     private void ShowScenesList(List<string> scenes)
     {
