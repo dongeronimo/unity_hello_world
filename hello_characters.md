@@ -9,7 +9,9 @@
 6) O diretório dos assets importados fica na raiz dos Assets do projeto, no caso do LOWPOLY MEDIEVAL WORLD ficam no diretório Polytype Studio. 
 7) Criei o GameObject onde as coisas do player ficarão - o PlayerRoot. O PlayerRoot também tem um outro GameObject vazio, o PlayerCameraPOV. O objetivo é fazer o script de camera acompanhar o player, baseado no CameraFollowing. 
 8) PlayerCameraPOV terá um script, que eu também chamei de PlayerCameraPOV, que irá cuidar da câmera seguir o player. O script recebe a camera (do tipo Camera) e o player root (do tipo GameObject) e no update muda a posição da câmera para ser igual a posição do PlayerCameraPOV pegando a transform.position do PlayerCameraPOV e faz o lookAt para a camera olhar para o player root. Se o player root se mover o player camera pov se move junto porque as transformações lineares são herdadas ao longo da hierarquia de componentes - se o pai sofre uma translação o filho é transladao junto.
+9) Adicionei o MedievalMale ao player root. Sua posição no espaço é (0,0,0).
 
+## TODO: Continuar o estudo do tutorial da bibliografia. 
 ## Dúvidas
 1) Os assets devem ser incluídos no controle de versão? Minha suspeita é que devem sim ser incluídos pq eles são parte do projeto, são necessários para o projeto rodar e podem ser modificados, já que suas meshes, texturas, sons e scripts também vem com o projeto.
 ## Bibliografia
