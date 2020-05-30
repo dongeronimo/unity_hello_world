@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Character Animations/Character Animation.unity
     guid: 06d70c1880f5645bf9badf738de9d417
+  - enabled: 1
+    path: Assets/Scenes/Animation Reuse/Character Animation Reuse.unity
+    guid: 02a4102005ef3f68784bf4ed0ed4b424
   m_configObjects: {}
