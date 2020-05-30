@@ -14,4 +14,6 @@ O objetivo é pegar as máquinas de estados de animações dos vários bonecos e
 - Fui no sword and shield, achei as animações, as arrastei pro Boneco Controller. Elas apareceram lá. Então suspostamente eu juntei as várias animações em um unico controller.
 - Observação: as animações ficam normalmente em arquivos FBX.
 - Agora eu devo criar as transições para ver se realmente estou usando as varias animações, ou melhor, estados.
--Criei uma transição do estado NPCS, dado pelo Medieval Peasant pro estado Idle, dado pelo Sword And Shield Package. Essa transição é o parâmetro IsRelaxed do BonecoAnimator. Se true fica em NPCS, se false vai para Idle.
+- Criei uma transição do estado NPCS, dado pelo Medieval Peasant pro estado Idle, dado pelo Sword And Shield Package. Essa transição é o parâmetro IsRelaxed do BonecoAnimator. Se true fica em NPCS, se false vai para Idle.
+- Criei um botão que faz a transição entre os estados.
+- Com isso assim eu mostrei que é possivel pegar animações de um boneco e por em outro.

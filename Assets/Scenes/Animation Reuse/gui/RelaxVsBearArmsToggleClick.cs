@@ -15,11 +15,11 @@ public class RelaxVsBearArmsToggleClick : MonoBehaviour
     {
         if (IsBonecoRelaxed())
         {
-            //TODO: Se está relaxado tem que ficar armado.
+            BonecoAnimator.SetBool("IsRelaxed", false);
         }
         else
         {
-            //TODO: Se está armado tem que ficar relaxado.
+            BonecoAnimator.SetBool("IsRelaxed", true);
         }
     }
     private bool IsBonecoRelaxed()
