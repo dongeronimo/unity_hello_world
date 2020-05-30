@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 686607738}
   - component: {fileID: 686607737}
   - component: {fileID: 686607736}
+  - component: {fileID: 686607739}
   m_Layer: 5
   m_Name: RelaxBearArmsToggleButton
   m_TagString: Untagged
@@ -248,7 +249,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.5318619, g: 0.7830189, b: 0.59465116, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -303,6 +304,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686607734}
   m_CullTransparentMesh: 0
+--- !u!114 &686607739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686607734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cffdafebde991661c99bef8f64736944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BonecoAnimator: {fileID: 1224840270}
 --- !u!1 &875733600
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,6 +582,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!95 &1224840270 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95371967617851828, guid: 413439f16c75bb34ebaa52c7ee0dab50,
+    type: 3}
+  m_PrefabInstance: {fileID: 1649988607}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1256215423
 GameObject:
   m_ObjectHideFlags: 0
