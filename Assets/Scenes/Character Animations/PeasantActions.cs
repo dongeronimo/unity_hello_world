@@ -14,10 +14,19 @@ public class PeasantActions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float h = Input.GetAxisRaw("Horizontal"); //* Time.deltaTime;
-        float v = Input.GetAxisRaw("Vertical"); //* Time.deltaTime;
-        Debug.Log(v);
-        animator.SetFloat("Forward", v);
+        //float h = Input.GetAxisRaw("Horizontal"); //* Time.deltaTime;
+        float v = GetVerticalInput();
+        SetForwardMovement(v);
+    }
 
+    private float GetVerticalInput()
+    {
+        float v = Input.GetAxisRaw("Vertical");
+        return v;
+    }
+
+    private void SetForwardMovement(float movementFactor)
+    {
+        animator.SetFloat("Forward", v);
     }
 }
