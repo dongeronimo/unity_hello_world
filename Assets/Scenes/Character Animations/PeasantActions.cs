@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PeasantActions : MonoBehaviour
 {
+    public bool SettingAxesManually = false;
+    public float HorizontalAxis = 0.0f;
+    public float VerticalAxis = 0.0f;
     public Animator animator;
     // Start is called before the first frame update
     void Start()
@@ -30,14 +33,28 @@ public class PeasantActions : MonoBehaviour
 
     private float GetVerticalInput()
     {
-        float v = Input.GetAxisRaw("Vertical");
-        return v;
+        if (SettingAxesManually == false)
+        {
+            float v = Input.GetAxisRaw("Vertical");
+            return v;
+        }
+        else
+        {
+            return VerticalAxis;
+        }
     }
 
     private float GetHorizontalInput()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        return h;
+        if (SettingAxesManually == false)
+        { 
+            float h = Input.GetAxisRaw("Horizontal");
+            return h;
+        }
+        else
+        {
+            return HorizontalAxis;
+        }
     }
 
     private void SetForwardMovement(float movementFactor)

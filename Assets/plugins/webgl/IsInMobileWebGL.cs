@@ -17,13 +17,10 @@ public class IsInMobileWebGL : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
-
+        if (_isMobile() == false)
+        {
+            GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

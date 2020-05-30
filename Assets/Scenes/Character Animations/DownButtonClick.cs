@@ -1,19 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DownButtonClick : MonoBehaviour
+public class DownButtonClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public PeasantActions peasant;
+
+    public void OnPointerDown(PointerEventData data)
     {
-        var btn = GetComponent<Button>();
-        btn.onClick.AddListener(OnClick);
-    }
-    void OnClick()
-    {
-        Debug.Log("Down");
+        peasant.SettingAxesManually = true;
+        peasant.VerticalAxis = -1.0f;
     }
 
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        peasant.SettingAxesManually = true;
+        peasant.VerticalAxis = 0.0f;
+    }
 }

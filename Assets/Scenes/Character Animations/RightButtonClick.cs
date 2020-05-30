@@ -1,19 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class RightButtonClick : MonoBehaviour
+public class RightButtonClick : MonoBehaviour,
+    IPointerDownHandler, IPointerUpHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public PeasantActions peasant;
+    public void OnPointerDown(PointerEventData data)
     {
-        var btn = GetComponent<Button>();
-        btn.onClick.AddListener(OnClick);
+        peasant.SettingAxesManually = true;
+        peasant.HorizontalAxis = 1.0f;
     }
-    void OnClick()
+
+    public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("Right");
+        peasant.SettingAxesManually = true;
+        peasant.HorizontalAxis = 0.0f;
     }
 
 }
