@@ -10,33 +10,59 @@ public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUp
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("OnDrag = " + eventData.position);
+        ModifyJoystickTouchImage(eventData.position);
+        Vector2 movementAxes = GetMovementAxes(eventData);
+        //TODO: mandar pro boneco
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag = " + eventData.position);
+        ModifyJoystickTouchImage(eventData.position);
+        Vector2 movementAxes = GetMovementAxes(eventData);
+        //TODO: mandar pro boneco
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("OnPointerDown = " + eventData.position);
         JoystickTouchImage.enabled = true;
+        ModifyJoystickTouchImage(eventData.position);
+        Vector2 movementAxes = GetMovementAxes(eventData);
+        //TODO: mandar pro boneco
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("OnPointerUp = " + eventData.position);
         JoystickTouchImage.enabled = false;
+        ModifyJoystickTouchImage(eventData.position);
+        Vector2 movementAxes = GetMovementAxes(eventData);
+        //TODO: mandar pro boneco
     }
-
-    // Start is called before the first frame update
+    private void ModifyJoystickTouchImage(Vector2 newPosition)
+    {
+        JoystickTouchImage.GetComponent<RectTransform>().position = newPosition;
+    }
+    private Vector2 getEventPositionInLocalCoordinates(PointerEventData eventData)
+    {
+        Vector2 joystickScreenCoordinates = GetComponent<RectTransform>().position;
+        Vector2 eventScreenCoordinates = eventData.position;
+        Vector2 eventLocalCoordinates = joystickScreenCoordinates - eventScreenCoordinates;
+        return eventLocalCoordinates;
+    }
+    private Vector2 GetMovementAxes(PointerEventData eventData)
+    {
+        var area = GetComponent<RectTransform>().rect;
+        Vector2 positionInLocalCoord = getEventPositionInLocalCoordinates(eventData);
+        var horizontalMovement = -positionInLocalCoord.x / area.width * 2.0f;
+        var verticalMovement = -positionInLocalCoord.y / area.height * 2.0f;
+        var movementAxesVector = new Vector2(horizontalMovement, verticalMovement);
+        movementAxesVector.Normalize();
+        return movementAxesVector;
+    }
     void Start()
     {
         JoystickTouchImage.enabled = false;    
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         
