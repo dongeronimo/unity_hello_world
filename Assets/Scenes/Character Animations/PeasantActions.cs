@@ -14,9 +14,18 @@ public class PeasantActions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //float h = Input.GetAxisRaw("Horizontal"); //* Time.deltaTime;
         float v = GetVerticalInput();
+        float h = GetHorizontalInput();
         SetForwardMovement(v);
+        if(h > 0)
+        {
+           // transform.RotateAround(new Vector3(0, 1, 0), 30) * Time.deltaTime;
+           transform.Rotate(new Vector3(0, 1, 0), 30 * Time.deltaTime);
+        }
+        if(h < 0)
+        {
+            transform.Rotate(new Vector3(0, 1, 0), -30 * Time.deltaTime);
+        }
     }
 
     private float GetVerticalInput()
@@ -25,21 +34,15 @@ public class PeasantActions : MonoBehaviour
         return v;
     }
 
+    private float GetHorizontalInput()
+    {
+        float h = Input.GetAxisRaw("Horizontal");
+        return h;
+    }
+
     private void SetForwardMovement(float movementFactor)
     {
         animator.SetFloat("Forward", movementFactor);
     }
-    /*
-    void OnAnimatorMove()
-    {
-       
-        Animator animator = GetComponent<Animator>();
-        if (animator)
-        {
-            Vector3 newPosition = transform.position;
-            newPosition.z += animator.GetFloat("Forward") * Time.deltaTime;
-            transform.position = newPosition;
-        }
-       
-    } */
+
 }
