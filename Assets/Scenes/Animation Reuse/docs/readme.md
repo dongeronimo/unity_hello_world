@@ -10,3 +10,8 @@ O objetivo é pegar as máquinas de estados de animações dos vários bonecos e
 - Criei um animator controller, BonecoController.
 - Pus esse controller no PTMedievalMale. Ele só tem dois estados iniciais, o AnyState e o Entry.
 - Quando dou play ele fica preso no entry pq ele não tem estado para ir.
+- Fui no diretório do asset da Polytope Studios, de onde vem o PTMedievalMale e fui no diretorio de animations, onde há o animation do PTMedievalPeasant. Arrastei pro meu BonecoController. A animação apareceu no state e se tornou a default
+- Fui no sword and shield, achei as animações, as arrastei pro Boneco Controller. Elas apareceram lá. Então suspostamente eu juntei as várias animações em um unico controller.
+- Observação: as animações ficam normalmente em arquivos FBX.
+- Agora eu devo criar as transições para ver se realmente estou usando as varias animações, ou melhor, estados.
+-Criei uma transição do estado NPCS, dado pelo Medieval Peasant pro estado Idle, dado pelo Sword And Shield Package. Essa transição é o parâmetro IsRelaxed do BonecoAnimator. Se true fica em NPCS, se false vai para Idle.
