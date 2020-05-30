@@ -27,6 +27,18 @@ public class PeasantActions : MonoBehaviour
 
     private void SetForwardMovement(float movementFactor)
     {
-        animator.SetFloat("Forward", v);
+        animator.SetFloat("Forward", movementFactor);
+    }
+
+    void OnAnimatorMove()
+    {
+        Animator animator = GetComponent<Animator>();
+
+        if (animator)
+        {
+            Vector3 newPosition = transform.position;
+            newPosition.z += animator.GetFloat("Forward") * Time.deltaTime;
+            transform.position = newPosition;
+        }
     }
 }
