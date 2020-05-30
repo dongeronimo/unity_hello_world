@@ -403,6 +403,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1111606141}
+  - component: {fileID: 1111606142}
   m_Layer: 0
   m_Name: Peasant
   m_TagString: Untagged
@@ -426,6 +427,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1111606142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111606140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d18149fe840d7b9fb91f5127c7fcdda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 95634433528325884}
 --- !u!1 &1330671806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,7 +1241,6 @@ GameObject:
   - component: {fileID: 4803136932172214}
   - component: {fileID: 95634433528325884}
   - component: {fileID: 1009335311704099}
-  - component: {fileID: 1009335311704100}
   m_Layer: 0
   m_Name: PT_Medieval_Male_Peasant_01_e
   m_TagString: Untagged
@@ -1242,24 +1255,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009335311704098}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48b7d5a6cef84e1718560913d21bdf3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1009335311704100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009335311704098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d18149fe840d7b9fb91f5127c7fcdda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 95634433528325884}
 --- !u!1 &1035027669660760
 GameObject:
   m_ObjectHideFlags: 0

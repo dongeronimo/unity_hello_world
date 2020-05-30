@@ -4,24 +4,18 @@ using UnityEngine;
 
 public class AnimatorForward : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    void OnAnimatorMove()
     {
-        var animator = GetComponent<Animator>();
-        //transform.parent.position += animator.deltaPosition;
-        //Debug.Log(animator.deltaPosition);
-    }
-    /*
-    public void OnAnimatorMove()
-    {
-        var animator = GetComponent<Animator>();
-        transform.parent.position += animator.deltaPosition;
-    }*/
+       
+        Animator animator = GetComponent<Animator>();
+        if (animator)
+        {
+            Vector3 newPosition = transform.position;
+            newPosition.z += animator.GetFloat("Forward") * Time.deltaTime;
+            transform.position = newPosition;
+        }
+       
+    } 
 }
 

@@ -29,16 +29,17 @@ public class PeasantActions : MonoBehaviour
     {
         animator.SetFloat("Forward", movementFactor);
     }
-
+    /*
     void OnAnimatorMove()
     {
+       
         Animator animator = GetComponent<Animator>();
-
         if (animator)
         {
             Vector3 newPosition = transform.position;
             newPosition.z += animator.GetFloat("Forward") * Time.deltaTime;
             transform.position = newPosition;
         }
-    }
+       
+    } */
 }
