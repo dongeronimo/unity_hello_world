@@ -8,7 +8,13 @@ AnimatorController:
   m_PrefabAsset: {fileID: 0}
   m_Name: Sword and Shied Animations
   serializedVersion: 5
-  m_AnimatorParameters: []
+  m_AnimatorParameters:
+  - m_Name: Forward
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -22,6 +28,56 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!1101 &1101495532572332090
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 4
+    m_ConditionEvent: Forward
+    m_EventTreshold: 0.5
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102205108205755282}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.7727273
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &1101559330802856778
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 3
+    m_ConditionEvent: Forward
+    m_EventTreshold: 0.5
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102399132513952758}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.17122853
+  m_TransitionOffset: 0
+  m_ExitTime: 0.54552865
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1102 &1102158200864055022
 AnimatorState:
   serializedVersion: 5
@@ -58,7 +114,8 @@ AnimatorState:
   m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
+  m_Transitions:
+  - {fileID: 1101559330802856778}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 1
@@ -84,7 +141,8 @@ AnimatorState:
   m_Name: Walk
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
+  m_Transitions:
+  - {fileID: 1101495532572332090}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 1
@@ -241,28 +299,28 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102542974862302162}
-    m_Position: {x: 240, y: 144, z: 0}
+    m_Position: {x: 240, y: 252, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102889050619992168}
-    m_Position: {x: 240, y: 204, z: 0}
+    m_Position: {x: 240, y: 312, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102158200864055022}
-    m_Position: {x: 456, y: 144, z: 0}
+    m_Position: {x: 456, y: 252, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102688024156150958}
-    m_Position: {x: 456, y: 204, z: 0}
+    m_Position: {x: 456, y: 312, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102726429022900162}
-    m_Position: {x: 456, y: 24, z: 0}
+    m_Position: {x: 456, y: 144, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102205108205755282}
     m_Position: {x: 240, y: 24, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102519713513854248}
-    m_Position: {x: 456, y: 84, z: 0}
+    m_Position: {x: 456, y: 192, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102399132513952758}
-    m_Position: {x: 240, y: 84, z: 0}
+    m_Position: {x: 240, y: 192, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
