@@ -316,6 +316,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263210542}
   m_CullTransparentMesh: 0
+--- !u!1 &322390386 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1887817051179016, guid: 413439f16c75bb34ebaa52c7ee0dab50,
+    type: 3}
+  m_PrefabInstance: {fileID: 1649988607}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &322390387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322390386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7af6ab168edbad4b3c85d92359e2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &322390388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322390386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc6e27825b592708e987027c1eda2d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &686607734
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,6 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JoystickTouchImage: {fileID: 904161745}
+  OrientationReceiver: {fileID: 322390387}
 --- !u!1 &875733600
 GameObject:
   m_ObjectHideFlags: 0
